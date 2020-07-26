@@ -1,7 +1,7 @@
 # MCRS with promiscous activities
 
-We have created this code to test the effects of catalytic promiscuity at the origin of life. For more deatails about MCRS models see: https://doi.org/10.1016/j.jtbi.2015.06.002
-Please note, that this repository does not contains all the simulations that has been published. The necessary modifications are commented out in the source code.
+We have created this code to test the effects of catalytic promiscuity at the origin of life. For more deatails about MCRS models see: https://doi.org/10.1016/j.jtbi.2015.06.002  
+Please note, that this repository does not contain all the simulations that has been published. The necessary modifications are commented out in the source code.
 Also note, that comments and variable names are hungarian.
 
 ## Prerequisites
