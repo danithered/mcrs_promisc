@@ -1,0 +1,87 @@
+#!/bin/bash
+
+
+
+#ncol: alapmatrix oszlopainak szama
+#nrow: alapmatrix sorainak szama
+#enzakt_num: az enzimaktivitasok szama
+#met_neigh_meret: a metabolikus szomsz. merete: ha 0 -> von Neumann; ha több -> Moore szomsz
+#repl_neigh_meret: a replikacios szomsz. merete: ha 0 -> von Neumann; ha több -> Moore szomsz
+#ciklusszam: hany iteracios ciklus fusson le
+#mintavetel_gyak: milyen gyakran vegyen mintat. Ha 0, akkor nem vesz, ha 1 akkor mindig, ha pl 3, akkor minden harmadik ciklusban
+#alapfeltoltes: a matrix hany szazaleka legyen alapbol feltoltve (random)
+#emax: a maximalis enzimaktivitas merteke
+#tradeoffEE: enzimaktivitas es enzimaktivitas kozotti tradeoff parameter
+#tradeoffEK: enzimaktivitas es replikacios koefficiens kozotti tradeoff parameter
+#kmin: minimalis k ertek (replikacios koefficiens)
+#kmax: maximalis k ertek (replikacios koefficiens)
+#phalal: az extinkcio valoszinusege
+#claimEmpty: az uresen maradas ~valsege
+#sd: a Gaussi eloszlas szorasa
+#spec_limit: a minimum hatar, amin felul egy enzimaktivitas szamit
+#diffuzioGyak: 
+#pMutacio
+#mentes: ment-e a vegen a fajl, vagy nem? (0 vagy ertek)
+
+#test: 10 10 2 0 0 10 2 0.8 1 0.2 0.4 2 4 0.1 0.001 0.1 0.01 0 0.01
+direct="IN"
+file="param"
+if [ ! -d  $direct ]; then
+	mkdir IN
+fi
+
+if [ -e $direct/$file ]; then
+	cp $direct/$file $direct/$file$(date +"%T")
+	rm $direct/$file
+fi 
+touch $direct/$file
+
+
+
+ncol=300
+nrow=300
+enzakt_num=5
+met_neigh_meret=2
+repl_neigh_meret=1
+ciklusszam=101
+mintavetel_gyak=10
+cellamintavetel_gyak=10
+alapfeltoltes=0.8
+emax=10.0
+tradeoffEE=1.2
+tradeoffEK=1.0
+kmin=2.0
+kmax=4.0
+phalal=0.1
+claimEmpty=20.0
+sd=1.0
+spec_limit=0.5
+diffuzioGyak=0
+pMutacio=0.01
+mentes=4
+
+#for i in {0..2}
+for m in ${met_neigh_meret[@]}
+do
+  for k in ${kmax[@]}
+  do
+    for b in ${tradeoffEE[@]}
+    do
+      for d in ${diffuzioGyak[@]}
+      do
+        for e in ${enzakt_num[@]}
+        do
+          for r in ${repl_neigh_meret[@]}
+          do
+            for i in {1..1}}
+            do
+	      #echo 10 10 0 0 0 $(($i+5)) >> file1
+	      echo $ncol $nrow ${e} ${m} ${r} $ciklusszam $mintavetel_gyak $cellamintavetel_gyak $alapfeltoltes $emax ${b} $tradeoffEK $kmin ${k} $phalal $claimEmpty $sd $spec_limit ${d} $pMutacio $mentes >> $direct/$file
+            done
+          done
+        done
+      done
+    done
+  done
+done
+#$(($diffuzioGyak+$i))
